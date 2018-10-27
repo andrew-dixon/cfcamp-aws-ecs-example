@@ -16,8 +16,7 @@ phases:
       - echo Build completed on `date`
       - echo Test started on `date`
       - docker run -p 8888:8888 -v $PWD:/var/www/ --name cfcamp -d $IMAGE_REPO_NAME:$IMAGE_TAG
-      - sleep 5s
-      - curl -f http://localhost:8888/ || exit 1
+      - curl -f --connect-timeout 30 http://localhost:8888/ || exit 1
       - echo Test completed on `date`
       - echo Pushing the Docker image...
       - docker push $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$IMAGE_REPO_NAME:$IMAGE_TAG
