@@ -4,13 +4,8 @@ services:
     image: cfcamp-ecs:latest
     build:
       context: .
-      args:
-        - AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY
-        - AWS_SECRET_ACCESS_KEY=$AWS_SECRET_KEY
     ports:
       - "8888:8888"
-    volumes:
-      - "./:/var/www/"
     env_file: ./variables.env
 networks:
   default:
